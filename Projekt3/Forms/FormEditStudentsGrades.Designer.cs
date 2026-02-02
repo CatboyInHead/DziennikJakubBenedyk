@@ -100,7 +100,7 @@
             Controls.Add(dgvGrades);
             Controls.Add(lbStudentsInfo);
             Name = "FormEditStudentsGrades";
-            Text = "FormEditStudentsGrade";
+            Text = "Edytuj oceny studenta";
             Load += FormEditStudentsGrades_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGrades).EndInit();
             ResumeLayout(false);

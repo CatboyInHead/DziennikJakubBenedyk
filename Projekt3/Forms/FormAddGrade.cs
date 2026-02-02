@@ -38,6 +38,8 @@ namespace Projekt3.Forms
         {
             var group = University.Fields.SelectMany(f => f.Groups).FirstOrDefault(g => g.Students.Any(s => s.StudentsID == Student.StudentsID));
 
+            this.Text = $"Dodaj ocenę dla: {Student.Name} {Student.LastName} {Student.StudentsID}";
+
             foreach (var subject in group.AssignedSubjects)
             {
                 cmbSubject.Items.Add(subject.Name);

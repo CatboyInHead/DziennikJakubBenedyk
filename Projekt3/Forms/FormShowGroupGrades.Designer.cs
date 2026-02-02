@@ -1,6 +1,6 @@
 ﻿namespace Projekt3.Forms
 {
-    partial class FormGroupGradesEditor
+    partial class FormShowGroupGrades
     {
         /// <summary>
         /// Required designer variable.
@@ -45,14 +45,14 @@
             dgvGradeEditor.Size = new Size(776, 345);
             dgvGradeEditor.TabIndex = 10;
             // 
-            // FormGroupGradesEditor
+            // FormShowGroupGrades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(dgvGradeEditor);
-            Name = "FormGroupGradesEditor";
-            Text = "FormGroupGradesEditor";
+            Name = "FormShowGroupGrades";
+            Text = "Oceny grupy";
             Load += FormGroupGradesEditor_Load;
             ((System.ComponentModel.ISupportInitialize)dgvGradeEditor).EndInit();
             ResumeLayout(false);

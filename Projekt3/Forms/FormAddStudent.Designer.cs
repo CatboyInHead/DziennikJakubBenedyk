@@ -120,7 +120,8 @@
             Controls.Add(btnSave);
             Controls.Add(tbName);
             Name = "FormAddStudent";
-            Text = "FormAddStudent";
+            Text = "Dodawanie nowego studenta";
+            Load += FormAddStudent_Load;
             ResumeLayout(false);
             PerformLayout();
         }

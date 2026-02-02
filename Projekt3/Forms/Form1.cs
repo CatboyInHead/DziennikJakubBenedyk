@@ -17,6 +17,11 @@ namespace Projekt3
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Dziennik.json");
 
             university.LoadFieldsOfStudy(path);
+            tabControl1.Dock = DockStyle.Fill;
+            dgvGroups.Dock = DockStyle.Fill;
+            dgvStudents.Dock = DockStyle.Fill;
+            dgvStudyFields.Dock = DockStyle.Fill;
+            dgvSubjects.Dock = DockStyle.Fill;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -341,7 +346,7 @@ namespace Projekt3
             var group = university.Fields.FirstOrDefault(f => f.FieldName.ToLower() == dgvStudyFields.CurrentRow.Cells["FieldName"].Value.ToString().ToLower()).Groups.FirstOrDefault(g => g.GroupName.ToLower() == dgvGroups.CurrentRow.Cells["GroupName"].Value.ToString().ToLower() && g.Semester == (int)dgvGroups.CurrentRow.Cells["Semester"].Value);
 
             if (group != null)
-                using (var form = new FormGroupGradesEditor(group))
+                using (var form = new FormShowGroupGrades(group))
                 {
                     form.ShowDialog();
                 }
@@ -355,7 +360,8 @@ namespace Projekt3
 
             foreach (var field in allFields)
             {
-                dgvStudyFields.Rows.Add(field.FieldName, field.Mode.ToString(), field.Groups.Count);
+                var totalStudents = field.Groups.SelectMany(g => g.Students).Count();
+                dgvStudyFields.Rows.Add(field.FieldName, field.Mode.ToString(), field.Groups.Count, totalStudents);
             }
         }
 
@@ -428,6 +434,5 @@ namespace Projekt3
 
             RefreshStudentsList(group);
         }
-
     }
 }

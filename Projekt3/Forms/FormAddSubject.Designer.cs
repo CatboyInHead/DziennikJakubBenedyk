@@ -102,7 +102,7 @@
             Controls.Add(label1);
             Controls.Add(tbECTS);
             Name = "FormAddSubject";
-            Text = "FormAddSubject";
+            Text = "Dodawanie przedmiotu";
             Load += FormAddSubject_Load;
             ResumeLayout(false);
             PerformLayout();

@@ -53,5 +53,9 @@ namespace Projekt3
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void FormAddStudent_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

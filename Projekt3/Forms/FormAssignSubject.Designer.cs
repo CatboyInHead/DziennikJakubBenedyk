@@ -94,7 +94,7 @@
             Controls.Add(label2);
             Controls.Add(cmbSubjectName);
             Name = "FormAssignSubject";
-            Text = "FormAssignSubject";
+            Text = "Przypisywanie przedmiotu";
             Load += FormAssignSubject_Load;
             ResumeLayout(false);
             PerformLayout();

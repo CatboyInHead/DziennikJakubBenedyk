@@ -139,7 +139,7 @@
             Controls.Add(btnCancel);
             Controls.Add(btnAddGrade);
             Name = "FormAddGrade";
-            Text = "FormAddGrade";
+            Text = "Dodawanie oceny";
             Load += FormAddGrade_Load;
             ResumeLayout(false);
             PerformLayout();

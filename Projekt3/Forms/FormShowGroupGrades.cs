@@ -1,9 +1,9 @@
 ﻿namespace Projekt3.Forms
 {
-    public partial class FormGroupGradesEditor : Form
+    public partial class FormShowGroupGrades : Form
     {
         private StudentsGroup Group { get; set; }
-        public FormGroupGradesEditor(StudentsGroup group)
+        public FormShowGroupGrades(StudentsGroup group)
         {
             InitializeComponent();
 
@@ -12,6 +12,7 @@
 
         private void FormGroupGradesEditor_Load(object sender, EventArgs e)
         {
+            this.Text = $"Oceny grupy: {Group.GroupName}";
             SetupDgv();
             UpdateDgv();
         }

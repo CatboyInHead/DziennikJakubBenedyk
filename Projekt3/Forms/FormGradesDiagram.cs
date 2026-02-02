@@ -17,6 +17,7 @@ namespace Projekt3.Forms
         private void FormGradesDiagram_Load(object sender, EventArgs e)
         {
             ShowSubjectCharts(Group);
+            this.Text = $"Diagramy ocen grupy: {Group.GroupName}";
         }
 
         private void ShowSubjectCharts(StudentsGroup group)

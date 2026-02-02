@@ -35,6 +35,8 @@ namespace Projekt3.Forms
                 return;
             }
 
+            this.Text = $"Edycja ocen studenta: {Student.LastName} {Student.Name} {Student.StudentsID}";
+
             lbStudentsInfo.Text = $"{Student.LastName} {Student.Name} {Student.StudentsID}";
 
             SetupGradesDgv();

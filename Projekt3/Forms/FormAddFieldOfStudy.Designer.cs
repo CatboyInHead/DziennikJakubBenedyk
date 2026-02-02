@@ -101,7 +101,7 @@
             Controls.Add(btnSave);
             Controls.Add(tbFieldName);
             Name = "FormAddFieldOfStudy";
-            Text = "FormAddFieldOfStudy";
+            Text = "Dodawanie kierunku studiów";
             ResumeLayout(false);
             PerformLayout();
         }

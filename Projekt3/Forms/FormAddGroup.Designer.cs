@@ -102,7 +102,7 @@
             Controls.Add(btnSave);
             Controls.Add(tbGroupName);
             Name = "FormAddGroup";
-            Text = "FormAddGroup";
+            Text = "Dodawanie grupy";
             ResumeLayout(false);
             PerformLayout();
         }
