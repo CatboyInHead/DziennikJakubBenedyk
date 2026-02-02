@@ -32,5 +32,10 @@ namespace Projekt3
         {
             Students.Add(student);
         }
+
+        public void RemoveStudent(string studentID)
+        {
+            Students.RemoveAll(s => s.StudentsID == studentID);
+        }
     }
 }

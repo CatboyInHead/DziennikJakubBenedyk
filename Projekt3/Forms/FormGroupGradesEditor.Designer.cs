@@ -28,12 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormGroupGradesEditor";
+            dgvGradeEditor = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvGradeEditor).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvGradeEditor
+            // 
+            dgvGradeEditor.AllowUserToAddRows = false;
+            dgvGradeEditor.AllowUserToDeleteRows = false;
+            dgvGradeEditor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGradeEditor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvGradeEditor.Location = new Point(12, 53);
+            dgvGradeEditor.Name = "dgvGradeEditor";
+            dgvGradeEditor.ReadOnly = true;
+            dgvGradeEditor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvGradeEditor.Size = new Size(776, 345);
+            dgvGradeEditor.TabIndex = 10;
+            // 
+            // FormGroupGradesEditor
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dgvGradeEditor);
+            Name = "FormGroupGradesEditor";
+            Text = "FormGroupGradesEditor";
+            Load += FormGroupGradesEditor_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvGradeEditor).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dgvGradeEditor;
     }
 }

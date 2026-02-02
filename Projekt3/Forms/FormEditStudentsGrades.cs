@@ -65,7 +65,7 @@ namespace Projekt3.Forms
                     if (Student.Grades == null)
                         Student.Grades = new List<Grade>();
 
-                    
+
 
                     Student.Grades.Add(new Grade
                     {
@@ -77,6 +77,15 @@ namespace Projekt3.Forms
                     RefreshGradesDgv();
                 }
             }
+        }
+
+        private void btnDeleteGrade_Click(object sender, EventArgs e)
+        {
+            var selectedGrade = dgvGrades.CurrentRow;
+            Student.Grades.RemoveAll(g => g.Subject.Name == selectedGrade.Cells[0].Value.ToString() &&
+                                  g.Value.ToString() == selectedGrade.Cells[1].Value.ToString() &&
+                                  g.Description == selectedGrade.Cells[2].Value.ToString());
+            RefreshGradesDgv();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -96,5 +105,6 @@ namespace Projekt3.Forms
                 foreach (var grade in Student.Grades)
                     dgvGrades.Rows.Add(grade.Subject.Name, grade.Value, grade.Description);
         }
+
     }
 }

@@ -33,6 +33,7 @@
             tabControl1 = new TabControl();
             tpFields = new TabPage();
             tpGroups = new TabPage();
+            btnEditGroupGrades = new Button();
             btnGradesDiagram = new Button();
             btnAssignSubject = new Button();
             btnAddGroup = new Button();
@@ -51,7 +52,7 @@
             label1 = new Label();
             tbStudentsID = new TextBox();
             tbNameAndLastName = new TextBox();
-            btnEditGroupGrades = new Button();
+            btnRemoveStudent = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvStudyFields).BeginInit();
             tabControl1.SuspendLayout();
             tpFields.SuspendLayout();
@@ -129,6 +130,16 @@
             tpGroups.Text = "Grupy";
             tpGroups.UseVisualStyleBackColor = true;
             // 
+            // btnEditGroupGrades
+            // 
+            btnEditGroupGrades.Location = new Point(507, 351);
+            btnEditGroupGrades.Name = "btnEditGroupGrades";
+            btnEditGroupGrades.Size = new Size(161, 34);
+            btnEditGroupGrades.TabIndex = 13;
+            btnEditGroupGrades.Text = "Wyświetl oceny grupy";
+            btnEditGroupGrades.UseVisualStyleBackColor = true;
+            btnEditGroupGrades.Click += btnEditGroupGrades_Click;
+            // 
             // btnGradesDiagram
             // 
             btnGradesDiagram.Location = new Point(340, 351);
@@ -175,6 +186,7 @@
             // 
             // tpStudents
             // 
+            tpStudents.Controls.Add(btnRemoveStudent);
             tpStudents.Controls.Add(btnEditStudentGrades);
             tpStudents.Controls.Add(btnAddStudent);
             tpStudents.Controls.Add(dgvStudents);
@@ -188,7 +200,7 @@
             // 
             // btnEditStudentGrades
             // 
-            btnEditStudentGrades.Location = new Point(173, 351);
+            btnEditStudentGrades.Location = new Point(340, 351);
             btnEditStudentGrades.Name = "btnEditStudentGrades";
             btnEditStudentGrades.Size = new Size(161, 34);
             btnEditStudentGrades.TabIndex = 12;
@@ -329,15 +341,15 @@
             tbNameAndLastName.Size = new Size(100, 23);
             tbNameAndLastName.TabIndex = 0;
             // 
-            // btnEditGroupGrades
+            // btnRemoveStudent
             // 
-            btnEditGroupGrades.Location = new Point(507, 351);
-            btnEditGroupGrades.Name = "btnEditGroupGrades";
-            btnEditGroupGrades.Size = new Size(161, 34);
-            btnEditGroupGrades.TabIndex = 13;
-            btnEditGroupGrades.Text = "Edytuj oceny grupy";
-            btnEditGroupGrades.UseVisualStyleBackColor = true;
-            btnEditGroupGrades.Click += btnEditGroupGrades_Click;
+            btnRemoveStudent.Location = new Point(173, 351);
+            btnRemoveStudent.Name = "btnRemoveStudent";
+            btnRemoveStudent.Size = new Size(161, 34);
+            btnRemoveStudent.TabIndex = 13;
+            btnRemoveStudent.Text = "Usuń studenta";
+            btnRemoveStudent.UseVisualStyleBackColor = true;
+            btnRemoveStudent.Click += btnRemoveStudent_Click;
             // 
             // Form1
             // 
@@ -389,5 +401,6 @@
         private TextBox tbStudentsID;
         private Button btnGradesDiagram;
         private Button btnEditGroupGrades;
+        private Button btnRemoveStudent;
     }
 }

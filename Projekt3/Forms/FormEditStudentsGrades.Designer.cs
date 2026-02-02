@@ -32,6 +32,7 @@
             dgvGrades = new DataGridView();
             btnAddGrade = new Button();
             btnCancel = new Button();
+            btnDeleteGrade = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvGrades).BeginInit();
             SuspendLayout();
             // 
@@ -78,11 +79,22 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // btnDeleteGrade
+            // 
+            btnDeleteGrade.Location = new Point(179, 421);
+            btnDeleteGrade.Name = "btnDeleteGrade";
+            btnDeleteGrade.Size = new Size(161, 34);
+            btnDeleteGrade.TabIndex = 14;
+            btnDeleteGrade.Text = "Usuń ocenę";
+            btnDeleteGrade.UseVisualStyleBackColor = true;
+            btnDeleteGrade.Click += btnDeleteGrade_Click;
+            // 
             // FormEditStudentsGrades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(976, 467);
+            Controls.Add(btnDeleteGrade);
             Controls.Add(btnCancel);
             Controls.Add(btnAddGrade);
             Controls.Add(dgvGrades);
@@ -100,5 +112,6 @@
         private DataGridView dgvGrades;
         private Button btnAddGrade;
         private Button btnCancel;
+        private Button btnDeleteGrade;
     }
 }

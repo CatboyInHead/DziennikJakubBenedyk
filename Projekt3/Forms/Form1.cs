@@ -91,6 +91,7 @@ namespace Projekt3
             if (e.RowIndex < 0) return;
 
             string selectedGroupName = dgvGroups.Rows[e.RowIndex].Cells["GroupName"].Value.ToString();
+            int selectedSemester = Convert.ToInt32(dgvGroups.Rows[e.RowIndex].Cells["Semester"].Value);
 
             if (dgvStudyFields.CurrentRow == null) return;
 
@@ -102,7 +103,7 @@ namespace Projekt3
 
                 if (field != null)
                 {
-                    var group = field.Groups.FirstOrDefault(g => g.GroupName.ToLower() == selectedGroupName.ToLower());
+                    var group = field.Groups.FirstOrDefault(g => g.GroupName.ToLower() == selectedGroupName.ToLower() && g.Semester == selectedSemester);
 
                     if (group != null)
                     {
@@ -188,12 +189,6 @@ namespace Projekt3
 
             string studentID = dgvStudents.CurrentRow.Cells["StudentsID"].Value.ToString();
 
-
-            //var student = university.Fields
-            //                .FirstOrDefault(f => f.FieldName.ToLower() == fieldName.ToLower())
-            //                ?.Groups.FirstOrDefault(g => g.GroupName.ToLower() == groupName.ToLower())
-            //                ?.Students.FirstOrDefault(s => s.StudentsID == studentID);
-
             var student = university.Fields
                             .SelectMany(f => f.Groups)
                             .SelectMany(g => g.Students)
@@ -268,6 +263,26 @@ namespace Projekt3
             }
         }
 
+        private void btnRemoveStudent_Click(object sender, EventArgs e)
+        {
+            var selectedStudentID = dgvStudents.CurrentRow.Cells["StudentsID"].Value.ToString();
+
+            var group = university.Fields
+                            .SelectMany(f => f.Groups)
+                            .FirstOrDefault(g => g.Students.Any(s => s.StudentsID == selectedStudentID));
+            if (group != null)
+            {
+                var result = MessageBox.Show($"Czy na pewno usun¹æ studenta o ID {selectedStudentID}?", "Potwierdzenie", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.Yes)
+                {
+                    group.RemoveStudent(selectedStudentID);
+                    university.UpdateJson();
+                    RefreshStudentsList(group);
+                }
+            }
+        }
+
         private void btnAddSubject_Click(object sender, EventArgs e)
         {
             using (var form = new FormAddSubject())
@@ -310,9 +325,9 @@ namespace Projekt3
             RefreshSearchList();
         }
 
-        private void btnGrades_Click(object sender, EventArgs e)
+        private void btnGradesDiagram_Click(object sender, EventArgs e)
         {
-            var group = university.Fields.FirstOrDefault(f => f.FieldName.ToLower() == dgvStudyFields.CurrentRow.Cells["FieldName"].Value.ToString().ToLower()).Groups.FirstOrDefault(g => g.GroupName.ToLower() == dgvGroups.CurrentRow.Cells["GroupName"].Value.ToString().ToLower());
+            var group = university.Fields.FirstOrDefault(f => f.FieldName.ToLower() == dgvStudyFields.CurrentRow.Cells["FieldName"].Value.ToString().ToLower()).Groups.FirstOrDefault(g => g.GroupName.ToLower() == dgvGroups.CurrentRow.Cells["GroupName"].Value.ToString().ToLower() && g.Semester == (int)dgvGroups.CurrentRow.Cells["Semester"].Value);
 
             if (group != null)
                 using (var form = new FormGradesDiagram(group))
@@ -323,16 +338,13 @@ namespace Projekt3
 
         private void btnEditGroupGrades_Click(object sender, EventArgs e)
         {
-            var fieldName = dgvStudyFields.CurrentRow.Cells["FieldName"].ToString(); //dodaj tryb
-            var groupName = dgvGroups.CurrentRow.Cells["GroupName"].ToString(); //dodaj semestr
+            var group = university.Fields.FirstOrDefault(f => f.FieldName.ToLower() == dgvStudyFields.CurrentRow.Cells["FieldName"].Value.ToString().ToLower()).Groups.FirstOrDefault(g => g.GroupName.ToLower() == dgvGroups.CurrentRow.Cells["GroupName"].Value.ToString().ToLower() && g.Semester == (int)dgvGroups.CurrentRow.Cells["Semester"].Value);
 
-            var field = university.Fields.FirstOrDefault(f => f.FieldName.ToLower() == fieldName.ToLower());
-
-
-            using (var form = new FormGroupGradesEditor())
-            {
-
-            }
+            if (group != null)
+                using (var form = new FormGroupGradesEditor(group))
+                {
+                    form.ShowDialog();
+                }
         }
 
         private void RefreshFieldsList()
@@ -367,7 +379,6 @@ namespace Projekt3
 
             foreach (var student in allStudents)
                 dgvStudents.Rows.Add(student.StudentsID, $"{student.Name} {student.LastName}", group.GroupName, student.Grades.Count);
-            //TODO: potencjalnie dodaj koklumne "kierunek", ale nie jest potrzebne koniecznie, zrób coœ z kolumn¹ oceny
         }
 
         private void RefreshSubjectsList(FieldOfStudy field)
@@ -417,5 +428,6 @@ namespace Projekt3
 
             RefreshStudentsList(group);
         }
+
     }
 }
