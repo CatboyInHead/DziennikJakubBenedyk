@@ -1,8 +1,5 @@
 using Projekt3.Forms;
-using System.CodeDom.Compiler;
 using System.Data;
-using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
 
 namespace Projekt3
 {
